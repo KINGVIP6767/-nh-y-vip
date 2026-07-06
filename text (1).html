@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>SENSITIVITY VIP - Chi Tin Ictech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(ellipse at 30% 40%, #1a0a1a, #0c030c);
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Roboto', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .tech-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 50, 150, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 50, 150, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .tech-grid::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 50, 180, 0.08), transparent 60%),
+                        radial-gradient(circle at 80% 20%, rgba(200, 0, 150, 0.06), transparent 50%);
+            pointer-events: none;
+        }
+
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(255, 50, 150, 0.12) 0px, rgba(255, 50, 150, 0.12) 2px, transparent 2px, transparent 30px),
+                repeating-linear-gradient(-30deg, rgba(200, 0, 150, 0.08) 0px, rgba(200, 0, 150, 0.08) 2px, transparent 2px, transparent 35px);
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 20;
+            overflow: hidden;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            border-radius: 50%;
+            background: rgba(255, 150, 200, 0.7);
+            box-shadow: 0 0 6px rgba(255, 100, 180, 0.3);
+            filter: blur(1px);
+            animation: fallSnow linear infinite;
+        }
+        @keyframes fallSnow {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0.1; }
+        }
+
+        .glass-card {
+            position: relative;
+            z-index: 15;
+            max-width: 620px;
+            width: 100%;
+            background: rgba(30, 10, 30, 0.88);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 50, 150, 0.25), 0 0 30px rgba(200, 0, 150, 0.1);
+            padding: 1.8rem 2rem;
+            border: 1px solid rgba(255, 50, 180, 0.2);
+        }
+
+        @media (max-width: 540px) {
+            .glass-card { padding: 1.3rem 1.2rem; }
+        }
+
+        .vip-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #ff3388;
+            padding-bottom: 0.8rem;
+        }
+        .vip-header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            color: #ff66aa;
+            text-shadow: 0 0 20px #cc3377, 0 0 60px #aa2255;
+            font-weight: 700;
+        }
+        .vip-header h1 i {
+            margin-right: 10px;
+            color: #ff66cc;
+        }
+        .sub {
+            font-size: 0.75rem;
+            color: #ff88bb;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+        .sub i {
+            margin-right: 6px;
+        }
+        .sign {
+            font-size: 0.75rem;
+            color: #ff66aa;
+            background: rgba(80, 0, 40, 0.5);
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 20px;
+            margin-top: 8px;
+            border: 1px solid rgba(255, 50, 150, 0.3);
+        }
+        .sign i {
+            margin-right: 5px;
+            color: #ff66cc;
+        }
+
+        .os-section {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .os-btn {
+            flex: 1;
+            background: #1a0a1a;
+            border: 1px solid #7a1a4a;
+            padding: 0.7rem 0;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #ff88bb;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .os-btn i {
+            margin-right: 8px;
+        }
+        .os-btn.active {
+            background: #882255;
+            color: white;
+            border-color: #ff66aa;
+            box-shadow: 0 0 20px #cc3377;
+        }
+
+        .device-row {
+            background: rgba(50, 0, 20, 0.6);
+            border-radius: 1rem;
+            padding: 0.6rem 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            border: 1px solid #7a1a4a;
+        }
+        .device-label {
+            font-weight: 700;
+            color: #ff66aa;
+            font-size: 0.9rem;
+        }
+        .device-label i {
+            margin-right: 8px;
+            color: #ff66cc;
+        }
+        .device-input-wrap {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #1a0a1a;
+            border-radius: 2rem;
+            padding: 0.3rem 1rem;
+            border: 1px solid #7a1a4a;
+        }
+        .device-input-wrap input {
+            flex: 1;
+            border: none;
+            padding: 0.5rem 0;
+            background: transparent;
+            outline: none;
+            color: #ffccdd;
+            font-size: 0.9rem;
+        }
+        .green-dot {
+            width: 12px;
+            height: 12px;
+            background: #ff66cc;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff66cc;
+        }
+
+        .step-status {
+            background: rgba(50, 0, 20, 0.6);
+            border-radius: 2rem;
+            padding: 0.6rem 1rem;
+            margin: 0.8rem 0 1rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #ff88bb;
+            border-left: 3px solid #ff3388;
+        }
+        .step-status i {
+            margin-right: 8px;
+        }
+
+        .action-btn-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.2rem auto;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .btn-sensitivity {
+            background: linear-gradient(95deg, #882255, #ff3388);
+            border: none;
+            padding: 0.8rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(200, 50, 150, 0.4);
+            transition: 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+        .btn-sensitivity:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 35px rgba(200, 50, 150, 0.6);
+        }
+        .btn-sensitivity i {
+            margin-right: 10px;
+        }
+        .toast-success {
+            background: #882255;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            color: white;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: 0.2s;
+            border: 1px solid #ff66aa;
+            display: none;
+        }
+        .toast-success i {
+            margin-right: 6px;
+        }
+        .toast-success.show { 
+            opacity: 1; 
+            display: inline-block;
+        }
+        .error-msg {
+            background: #440011;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #ff8888;
+            opacity: 0;
+            transition: 0.2s;
+            border: 1px solid #ff2244;
+            display: none;
+        }
+        .error-msg i {
+            margin-right: 6px;
+        }
+        .error-msg.show { 
+            opacity: 1; 
+            display: inline-block;
+        }
+
+        .table-container {
+            background: rgba(50, 0, 20, 0.5);
+            border-radius: 1.5rem;
+            padding: 1rem 1.2rem;
+            margin-top: 0.5rem;
+            border: 1px solid #7a1a4a;
+        }
+        .table-container.hidden { display: none; }
+        
+        .stats-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(50, 0, 30, 0.4);
+            border-radius: 60px;
+            padding: 0.4rem 0.8rem 0.4rem 1.2rem;
+            flex-wrap: wrap;
+            border: 1px solid rgba(255, 50, 150, 0.15);
+        }
+        .stat-label {
+            font-weight: 600;
+            color: #ff88bb;
+            font-size: 0.85rem;
+            min-width: 140px;
+            letter-spacing: 0.5px;
+        }
+        .stat-label i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+            color: #ff66cc;
+        }
+        .stat-bar-container {
+            flex: 3;
+            min-width: 180px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .stat-bar-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+            background: linear-gradient(90deg, #882255, #ff3388, #ff66aa);
+        }
+        .stat-value {
+            font-weight: 800;
+            color: #ff66aa;
+            font-size: 1rem;
+            font-family: monospace;
+            background: #1a0a1a;
+            padding: 0.15rem 0.7rem;
+            border-radius: 40px;
+            min-width: 55px;
+            text-align: center;
+            border: 1px solid #7a1a4a;
+        }
+
+        .fire-btn-block {
+            margin-top: 1.2rem;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, rgba(200, 50, 150, 0.15), rgba(255, 50, 180, 0.08));
+            border-radius: 1.5rem;
+            border: 1px solid #ff3388;
+            text-align: center;
+        }
+        .fire-btn-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ff66aa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .fire-btn-title i {
+            margin-right: 8px;
+            color: #ff66cc;
+        }
+        .fire-btn-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ff66cc;
+            text-shadow: 0 0 20px #cc3377;
+            background: rgba(50, 0, 20, 0.5);
+            display: inline-block;
+            padding: 0.2rem 1.5rem;
+            border-radius: 50px;
+            font-family: monospace;
+            border: 1px solid #ff3388;
+        }
+        .fire-btn-value i {
+            margin-right: 12px;
+            color: #ff66cc;
+        }
+        .footnote {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.65rem;
+            color: #aa6688;
+        }
+        .footnote i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tech-grid"></div>
+    <div class="stars-bg"></div>
+
+    <!-- TUYẾT RƠI PHỦ TRÊN NỘI DUNG (z-index cao hơn card) -->
+    <div class="snow" id="snowContainer"></div>
+
+    <div class="glass-card">
+        <div class="vip-header">
+            <h1><i class="fas fa-crosshairs"></i> SENSITIVITY VIP</h1>
+            <div class="sub"><i class="fas fa-user"></i> Chi Tin Ictech</div>
+            <div class="sign"><i class="fas fa-skull"></i> By Chi Tin Ictech <i class="fas fa-fire"></i></div>
+        </div>
+
+        <div class="os-section">
+            <button class="os-btn" id="androidBtn"><i class="fab fa-android"></i> ANDROID</button>
+            <button class="os-btn" id="iosBtn"><i class="fab fa-apple"></i> IOS</button>
+        </div>
+
+        <div class="device-row">
+            <span class="device-label"><i class="fas fa-mobile-alt"></i> DEVICE:</span>
+            <div class="device-input-wrap">
+                <input type="text" id="deviceName" placeholder="SAMSUNG GALAXY S21" value="SAMSUNG GALAXY S21">
+                <div class="green-dot"></div>
+            </div>
+        </div>
+
+        <div class="action-btn-wrapper">
+            <button class="btn-sensitivity" id="getSensitivityBtn"><i class="fas fa-bullseye"></i> GET SENSITIVITY</button>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 0.5rem;">
+            <div id="successToast" class="toast-success"><i class="fas fa-check-circle"></i> SUCCESS!</div>
+            <div id="errorToast" class="error-msg"><i class="fas fa-exclamation-triangle"></i> ENTER DEVICE NAME</div>
+        </div>
+
+        <div id="stepStatus" class="step-status"><i class="fas fa-robot"></i> ⚡ Ready</div>
+
+        <div id="tableContainer" class="table-container hidden">
+            <div class="stats-list">
+                <div class="stat-item">
+                    <span class="stat-label"><i class="fas fa-arrows-alt"></i> GENERAL</span>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar-fill" id="bar_general"></div>
+                    </div>
+                    <span class="stat-value" id="val_general">---</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label"><i class="fas fa-eye"></i> FREE LOOK</span>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar-fill" id="bar_freeLook"></div>
+                    </div>
+                    <span class="stat-value" id="val_freeLook">---</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label"><i class="fas fa-circle"></i> RED DOT</span>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar-fill" id="bar_redDot"></div>
+                    </div>
+                    <span class="stat-value" id="val_redDot">---</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label"><i class="fas fa-search-plus"></i> SCOPE 2X</span>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar-fill" id="bar_scope2"></div>
+                    </div>
+                    <span class="stat-value" id="val_scope2">---</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label"><i class="fas fa-camera-retro"></i> SCOPE 4X</span>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar-fill" id="bar_scope4"></div>
+                    </div>
+                    <span class="stat-value" id="val_scope4">---</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label"><i class="fas fa-bullseye"></i> SNIPER SCOPE</span>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar-fill" id="bar_sniper"></div>
+                    </div>
+                    <span class="stat-value" id="val_sniper">---</span>
+                </div>
+            </div>
+
+            <div class="fire-btn-block">
+                <div class="fire-btn-title"><i class="fas fa-gamepad"></i> FIRE BUTTON <i class="fas fa-crosshairs"></i></div>
+                <div class="fire-btn-value"><i class="fas fa-bolt"></i> <span id="val_fireBtn">---</span></div>
+            </div>
+            <div class="footnote"><i class="fas fa-shield-alt"></i> Optimized sensitivity - OB54</div>
+        </div>
+    </div>
+
+    <script>
+        function createSnow() {
+            const container = document.getElementById('snowContainer');
+            if (!container) return;
+            // TĂNG SỐ LƯỢNG TUYẾT LÊN GẤP 5: 80 → 400
+            for (let i = 0; i < 400; i++) {
+                const snow = document.createElement('div');
+                snow.classList.add('snowflake');
+                const size = Math.random() * 4 + 2;
+                snow.style.width = size + 'px';
+                snow.style.height = size + 'px';
+                snow.style.left = Math.random() * 100 + '%';
+                snow.style.animationDuration = (Math.random() * 6 + 4) + 's';
+                snow.style.animationDelay = Math.random() * 6 + 's';
+                snow.style.opacity = Math.random() * 0.5 + 0.2;
+                container.appendChild(snow);
+            }
+        }
+        createSnow();
+
+        function randomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        const MAX_VALUE = 200;
+
+        const RANGES = {
+            general: { min: 150, max: 170 },
+            freeLook: { min: 140, max: 155 },
+            redDot: { min: 105, max: 120 },
+            scope2: { min: 95, max: 110 },
+            scope4: { min: 110, max: 125 },
+            sniper: { min: 185, max: 200 },
+            fireBtn: { min: 42, max: 50 }
+        };
+
+        function getRandomValue(key) {
+            const range = RANGES[key];
+            return range ? randomInt(range.min, range.max) : 0;
+        }
+
+        function updateBar(elementId, value) {
+            const bar = document.getElementById(elementId);
+            if (!bar) return;
+            let percent = (value / MAX_VALUE) * 100;
+            percent = Math.min(100, Math.max(0, percent));
+            bar.style.width = percent + '%';
+        }
+
+        function updateAllValues() {
+            const genVal = getRandomValue('general');
+            const freeVal = getRandomValue('freeLook');
+            const redVal = getRandomValue('redDot');
+            const scope2Val = getRandomValue('scope2');
+            const scope4Val = getRandomValue('scope4');
+            const sniperVal = getRandomValue('sniper');
+            const fireVal = getRandomValue('fireBtn');
+
+            document.getElementById('val_general').innerText = genVal;
+            document.getElementById('val_freeLook').innerText = freeVal;
+            document.getElementById('val_redDot').innerText = redVal;
+            document.getElementById('val_scope2').innerText = scope2Val;
+            document.getElementById('val_scope4').innerText = scope4Val;
+            document.getElementById('val_sniper').innerText = sniperVal;
+            document.getElementById('val_fireBtn').innerText = fireVal;
+
+            updateBar('bar_general', genVal);
+            updateBar('bar_freeLook', freeVal);
+            updateBar('bar_redDot', redVal);
+            updateBar('bar_scope2', scope2Val);
+            updateBar('bar_scope4', scope4Val);
+            updateBar('bar_sniper', sniperVal);
+        }
+
+        let toastTimeout = null;
+        function showSuccessToast() {
+            const toast = document.getElementById('successToast');
+            if (!toast) return;
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toast.classList.remove('show');
+            void toast.offsetWidth;
+            toast.classList.add('show');
+            toastTimeout = setTimeout(() => toast.classList.remove('show'), 1800);
+        }
+
+        let errorTimeout = null;
+        function showErrorToast() {
+            const err = document.getElementById('errorToast');
+            if (!err) return;
+            if (errorTimeout) clearTimeout(errorTimeout);
+            err.classList.remove('show');
+            void err.offsetWidth;
+            err.classList.add('show');
+            errorTimeout = setTimeout(() => err.classList.remove('show'), 2000);
+        }
+
+        function isDeviceNameValid() {
+            const input = document.getElementById('deviceName');
+            return input ? input.value.trim() !== '' : false;
+        }
+
+        const stepDiv = document.getElementById('stepStatus');
+        function setStep(msg) { if (stepDiv) stepDiv.innerHTML = msg; }
+
+        let isProcessing = false;
+        function onGetClick() {
+            if (isProcessing) return;
+            if (!isDeviceNameValid()) {
+                showErrorToast();
+                setStep("⚠️ Please enter device name first");
+                return;
+            }
+            const tableDiv = document.getElementById('tableContainer');
+            if (tableDiv.classList.contains('hidden')) tableDiv.classList.remove('hidden');
+            
+            isProcessing = true;
+            const btn = document.getElementById('getSensitivityBtn');
+            btn.disabled = true;
+            btn.style.opacity = "0.7";
+            
+            setStep("🔍 Scanning device...");
+            setTimeout(() => {
+                setStep("📡 Fetching sensitivity data...");
+                setTimeout(() => {
+                    setStep("🧠 AI optimizing...");
+                    setTimeout(() => {
+                        updateAllValues();
+                        showSuccessToast();
+                        setStep("✅ Success! Sensitivity optimized");
+                        isProcessing = false;
+                        btn.disabled = false;
+                        btn.style.opacity = "1";
+                        setTimeout(() => {
+                            if (!isProcessing) setStep("⚡ Ready");
+                        }, 2500);
+                    }, 500);
+                }, 500);
+            }, 500);
+        }
+
+        const androidBtn = document.getElementById('androidBtn');
+        const iosBtn = document.getElementById('iosBtn');
+        function setActiveOS(os) {
+            if (os === 'android') {
+                androidBtn.classList.add('active');
+                iosBtn.classList.remove('active');
+            } else {
+                iosBtn.classList.add('active');
+                androidBtn.classList.remove('active');
+            }
+        }
+        if (androidBtn) androidBtn.addEventListener('click', () => setActiveOS('android'));
+        if (iosBtn) iosBtn.addEventListener('click', () => setActiveOS('ios'));
+
+        const deviceInput = document.getElementById('deviceName');
+        function toggleTable() {
+            const table = document.getElementById('tableContainer');
+            if (isDeviceNameValid()) {
+                if (table.classList.contains('hidden')) table.classList.remove('hidden');
+            } else {
+                if (!table.classList.contains('hidden')) table.classList.add('hidden');
+                setStep("⚠️ Enter device name to continue");
+            }
+        }
+        if (deviceInput) {
+            deviceInput.addEventListener('input', toggleTable);
+            toggleTable();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setActiveOS('android');
+            toggleTable();
+            if (!isDeviceNameValid()) setStep("⚠️ Enter device name to start");
+            else setStep("⚡ Ready");
+        });
+
+        document.getElementById('getSensitivityBtn').addEventListener('click', onGetClick);
+    </script>
+</body>
+</html>
